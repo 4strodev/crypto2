@@ -1,0 +1,47 @@
+<div class="bg-gray-100 dark:bg-gray-600 min-h-[100vh] pt-8">
+    <table class="w-full lg:w-1/2 mx-auto">
+        <thead>
+            <tr class="border-b border-gray-400 dark:border-gray-100">
+                <th *ngFor="let label of labels" class="dark:text-gray-50">
+                    {{ label }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="
+                    let coin of coingeckoService.editableCoins;
+                    let i = index
+                "
+            >
+                <td class="text-center dark:text-gray-50">{{ i + 1 }}</td>
+                <td class="py-2 flex items-center dark:text-gray-50">
+                    <img
+                        [src]="coin.image"
+                        class="ml-20 w-8"
+                        alt="coin image"
+                    />
+                    <span class="whitespace-nowrap ml-4">{{ coin.name }}</span>
+                </td>
+                <td class="text-center uppercase dark:text-gray-50">
+                    {{ coin.symbol }}
+                </td>
+                <td class="text-center dark:text-gray-50">
+                    {{ coin.current_price }} {{ coingeckoService.currency_symbol }}
+                </td>
+                <td
+                    class="text-center"
+                    [ngClass]="{
+                        'text-green-500': coin.price_change_percentage_24h >= 0,
+                        'text-red-500': coin.price_change_percentage_24h < 0
+                    }"
+                >
+                    {{ coin.price_change_percentage_24h }} %
+                </td>
+                <td class="text-center dark:text-gray-50">
+                    {{ coin.total_volume }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

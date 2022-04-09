@@ -1,0 +1,26 @@
+<nav class="flex bg-gray-50 dark:bg-gray-500 lg:px-8">
+    <div class="flex-grow flex items-center">
+        <img
+            class="w-20"
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.zeemly.com%2Fzeemly%2Fproduct%2Ftailwind-css.png&f=1&nofb=1"
+            alt="tailwind logo"
+        />
+        <span class="mx-4 text-3xl dark:text-white">Coin List</span>
+    </div>
+    <app-currency-selector class="m-auto"></app-currency-selector>
+    <input
+        type="text"
+        placeholder="Search"
+        class="bg-transparent dark:text-gray-50 m-4 px-2 border-2 border-gray-600 dark:border-gray-50 outline-none"
+        name="search"
+        id="search"
+        [(ngModel)]="textSearch"
+        (keyup)="searchCoin()"
+    />
+    <button
+        (click)="themeService.toggleDarkMode()"
+        class="dark:text-white border-2 border-gray-600 p-2 my-4 hover:bg-gray-600 hover:text-white dark:border-gray-50 dark:hover:text-gray-600 dark:hover:bg-gray-50"
+    >
+        Dark Mode
+    </button>
+</nav>

@@ -1,0 +1,6 @@
+<select name="currency" id="currency" [(ngModel)]="currency_index" (change)="refreshCoins()"
+    class="text-lg p-2 uppercase bg-transparent border-black border-2 outline-none dark:border-white dark:text-white dark:bg-gray-500">
+    <option *ngFor="let currency of currencies; let i = index" [value]="i">
+        {{ currency.label }}
+    </option>
+</select>
